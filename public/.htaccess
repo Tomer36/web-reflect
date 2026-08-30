@@ -1,0 +1,29 @@
+
+# Next.js's static export puts a directory (e.g. "he/") of internal
+# prefetch-payload files right alongside each route's "he.html" file, at
+# the same path. Without this, Apache's default directory-slash handling
+# intercepts "/he" and redirects it to "/he/" — which has no index.html —
+# before the rewrite rules below ever run, producing a 404.
+<IfModule mod_dir.c>
+  DirectorySlash Off
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Bare domain root has no page of its own — send visitors to the
+  # Hebrew (default) locale.
+  RewriteRule ^$ /he [R=302,L]
+
+  # Next.js's static export writes each route as a flat "<route>.html"
+  # file (e.g. he.html) AND a same-named directory of internal prefetch
+  # payloads (e.g. he/) side by side — so this intentionally does not
+  # exclude directory matches (no "!-d"), unlike the usual version of
+  # this rule, or "/he" would never reach the .html file.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.*)$ $1.html [L]
+</IfModule>
+
+ErrorDocument 404 /404.html

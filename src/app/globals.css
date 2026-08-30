@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+:root {
+  --background: #07080c;
+  --surface: #0e1016;
+  --surface-raised: #12141c;
+  --border: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --foreground: #eceef2;
+  --muted: #99a0b2;
+  --accent: #407bff;
+  --accent-label: #7aa6ff;
+  --accent-soft: rgba(64, 123, 255, 0.14);
+  --signal: #baf76a;
+  --warn: #f5b34d;
+}
+
+[data-theme="light"] {
+  --background: #f7f7fa;
+  --surface: #ffffff;
+  --surface-raised: #ffffff;
+  --border: rgba(15, 17, 25, 0.09);
+  --border-strong: rgba(15, 17, 25, 0.18);
+  --foreground: #14151c;
+  --muted: #5a5f70;
+  --accent: #3763e0;
+  --accent-label: #2a4fc4;
+  --accent-soft: rgba(55, 99, 224, 0.1);
+  --signal: #2f9a4a;
+  --warn: #b3670a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-label: var(--accent-label);
+  --color-accent-soft: var(--accent-soft);
+  --color-signal: var(--signal);
+  --color-warn: var(--warn);
+  --font-sans: var(--font-plex-sans);
+  --font-mono: var(--font-plex-mono);
+}
+
+html {
+  background: var(--background);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family:
+    var(--font-plex-sans),
+    var(--font-plex-sans-hebrew),
+    var(--font-plex-sans-arabic),
+    ui-sans-serif,
+    system-ui,
+    sans-serif;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+::selection {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.font-mono-ui {
+  font-family:
+    var(--font-plex-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(127, 127, 127, 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(127, 127, 127, 0.09) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/*
+ * Accessibility widget overrides — toggled via classes on <html> by
+ * AccessibilityWidget. High contrast forces pure black-on-white
+ * regardless of the light/dark theme, since that's the point of it.
+ */
+html.a11y-text-scale-1 {
+  font-size: 112.5%;
+}
+
+html.a11y-text-scale-2 {
+  font-size: 125%;
+}
+
+html.a11y-underline-links a {
+  text-decoration: underline !important;
+}
+
+html.a11y-high-contrast body {
+  background-color: #fff !important;
+  color: #000 !important;
+}
+
+html.a11y-high-contrast a,
+html.a11y-high-contrast button {
+  color: #000 !important;
+}
+
+html.a11y-high-contrast * {
+  border-color: #000 !important;
+}

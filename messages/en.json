@@ -1,0 +1,127 @@
+{
+  "brand": "Web Reflect",
+  "meta": {
+    "title": "Web Reflect",
+    "description": "Web Reflect is a focused software studio building custom web apps, business websites, and systems for businesses."
+  },
+  "nav": {
+    "about": "Services",
+    "portfolio": "Work",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "hero": {
+    "eyebrow": "Software Development Studio",
+    "name": "Web Reflect",
+    "tagline": "A focused software studio building custom systems, web apps, and websites for businesses.",
+    "ctaPrimary": "Start a project",
+    "ctaSecondary": "View work",
+    "highlightsTitle": "What we build",
+    "highlights": ["Business systems", "Websites & e-commerce", "Automation & integrations", "Multilingual experiences"]
+  },
+  "services": {
+    "eyebrow": "What we do",
+    "title": "Services",
+    "subtitle": "End-to-end software development — from a single business website to a multi-service backend platform.",
+    "items": [
+      {
+        "title": "Web Apps",
+        "description": "Dynamic, interactive, and scalable web applications built to grow with your business — from internal tools to customer-facing platforms."
+      },
+      {
+        "title": "Custom Website Design",
+        "description": "Business websites, e-commerce stores, and blogs — built from scratch, fast-loading, and designed around your brand instead of a template."
+      },
+      {
+        "title": "Systems Development",
+        "description": "Process automation, third-party integrations, and backend systems that remove manual work and connect the tools your business already uses."
+      }
+    ]
+  },
+  "clients": {
+    "eyebrow": "Working together",
+    "title": "Clients",
+    "subtitle": "Businesses that have chosen to work with me.",
+    "items": ["Okal Brothers", "Shehab Bakery", "Top Cosmetics", "Cali Armor"]
+  },
+  "portfolio": {
+    "eyebrow": "Selected work",
+    "title": "Projects",
+    "subtitle": "A sample of systems and applications built for real businesses.",
+    "statusInProgress": "In development",
+    "statusLive": "Live",
+    "items": [
+      {
+        "tag": "E-commerce platform",
+        "title": "E-commerce Platform",
+        "status": "inProgress",
+        "description": "A custom e-commerce platform with independent storefronts, multilingual support, and a shopping experience tailored to each brand.",
+        "stack": ["E-commerce", "Multilingual storefront"]
+      },
+      {
+        "tag": "Business management system",
+        "title": "Customer Follow-Up & Debt Collection System",
+        "status": "live",
+        "description": "A system for customer follow-up and collections, with tailored workflows and business-data synchronization.",
+        "stack": ["Customer management", "Business workflows"]
+      },
+      {
+        "tag": "Management system",
+        "title": "Custom CRM System",
+        "status": "live",
+        "description": "A custom management system that brings business information and workflows together in one place.",
+        "stack": ["Business management", "Custom workflows"]
+      },
+      {
+        "tag": "Digital menu",
+        "title": "Digital Menu",
+        "status": "live",
+        "description": "A mobile-friendly digital interface with organised content and an easy-to-use experience.",
+        "stack": ["Mobile-friendly", "Multilingual"]
+      },
+      {
+        "tag": "Automation microservice",
+        "title": "Document Automation Service",
+        "status": "live",
+        "description": "An automation service for processing documents and delivering results efficiently.",
+        "stack": ["Document processing", "Automation"]
+      }
+    ]
+  },
+  "skills": {
+    "eyebrow": "Toolbox",
+    "title": "Capabilities",
+    "subtitle": "The areas we specialize in, from development to launch.",
+    "items": [
+      "Web applications & websites",
+      "Business management systems",
+      "Automation & integrations",
+      "E-commerce",
+      "Multilingual & RTL development"
+    ]
+  },
+  "contact": {
+    "eyebrow": "Get in touch",
+    "title": "Let's build something",
+    "subtitle": "Have a project in mind? Reach out directly — I read every message.",
+    "direct": {
+      "title": "Direct contact",
+      "email": "Email",
+      "phone": "Phone",
+      "whatsapp": "WhatsApp"
+    }
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  },
+  "accessibility": {
+    "openWidget": "Accessibility options",
+    "panelTitle": "Accessibility",
+    "textSize": "Text size",
+    "decreaseText": "Decrease text size",
+    "reset": "Reset",
+    "increaseText": "Increase text size",
+    "highContrast": "High contrast",
+    "underlineLinks": "Underline links"
+  }
+}
