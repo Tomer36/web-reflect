@@ -1,29 +1,23 @@
-"use client";
+/* eslint-disable @next/next/no-img-element -- the files are already sized by scripts/build-images.mjs */
+import images from "@/generated/images.json";
 
-import Image from "next/image";
-import { useTheme } from "next-themes";
-import { useHasMounted } from "@/hooks/useHasMounted";
-
-export function SiteLogo({ className = "h-8 w-auto" }: { className?: string }) {
-  const { resolvedTheme } = useTheme();
-  const mounted = useHasMounted();
-
-  // Default to the dark-background variant until mounted (matches the
-  // site's default theme), then swap if the resolved theme is light —
-  // the source logo's "WEB" text is pure white and unreadable on light.
-  const src =
-    mounted && resolvedTheme === "light"
-      ? "/logo/webreflect-light.png"
-      : "/logo/webreflect.png";
-
+// Both variants are in the HTML and CSS shows the one that fits the theme
+// (see .logo-light / .logo-dark), so there is no swap after hydration. The
+// source logo's "WEB" lettering is white in the dark variant and near-black
+// in the light one.
+export function SiteLogo() {
+  const { light, dark } = images.logo;
   return (
-    <Image
-      src={src}
-      alt="Web Reflect"
-      width={768}
-      height={167}
-      priority
-      className={className}
-    />
+    <>
+      <img className="logo-light" src={light.src} alt="Web Reflect" width={light.width} height={light.height} />
+      <img
+        className="logo-dark"
+        src={dark.src}
+        alt="Web Reflect"
+        width={dark.width}
+        height={dark.height}
+        loading="lazy"
+      />
+    </>
   );
 }

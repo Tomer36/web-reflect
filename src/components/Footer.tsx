@@ -1,28 +1,43 @@
-import { useLocale, useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import Link from "next/link";
+import { href, type Locale, type Messages } from "@/lib/i18n";
+import { siteConfig } from "@/lib/site-config";
 import { SiteLogo } from "./SiteLogo";
 
-export function Footer() {
-  const t = useTranslations("footer");
-  const locale = useLocale();
+// Logo, one line, legal links, one copyright line. Nothing else.
+export function Footer({ locale, t }: { locale: Locale; t: Messages }) {
   const year = new Date().getFullYear();
-  const legalLabels = {
-    en: { navigation: "Legal links", privacy: "Privacy Policy", terms: "Terms of Use" },
-    he: { navigation: "קישורים משפטיים", privacy: "מדיניות פרטיות", terms: "תנאי שימוש" },
-    ar: { navigation: "روابط قانونية", privacy: "سياسة الخصوصية", terms: "شروط الاستخدام" },
-  }[locale] ?? { navigation: "Legal links", privacy: "Privacy Policy", terms: "Terms of Use" };
+  const legal = [
+    { path: "/accessibility", label: t.nav.accessibility },
+    { path: "/privacy-policy", label: t.nav.privacy },
+    { path: "/terms-of-use", label: t.nav.terms },
+  ];
 
   return (
-    <footer className="border-t border-border">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-5 py-10 text-center sm:flex-row sm:justify-between sm:px-8 sm:text-start">
-        <SiteLogo className="h-6 w-auto" />
-        <div className="flex flex-col items-center gap-2 sm:items-end">
-          <nav aria-label={legalLabels.navigation} className="flex gap-4 text-xs">
-            <Link href="/privacy-policy" className="text-muted transition-colors hover:text-foreground">{legalLabels.privacy}</Link>
-            <Link href="/terms-of-use" className="text-muted transition-colors hover:text-foreground">{legalLabels.terms}</Link>
-          </nav>
-          <p className="font-mono-ui text-xs text-muted">© {year} Web Reflect — {t("rights")}</p>
-        </div>
+    <footer className="site-footer">
+      <div className="wrap">
+        <Link className="logo" href={href(locale, "/")}>
+          <SiteLogo />
+        </Link>
+        <p className="footer-line">{t.site.tagline}</p>
+        <nav className="footer-legal" aria-label={t.nav.legal}>
+          <ul>
+            {legal.map((item) => (
+              <li key={item.path}>
+                <Link href={href(locale, item.path)}>{item.label}</Link>
+              </li>
+            ))}
+            {siteConfig.gaId && (
+              <li>
+                <button type="button" data-consent-reset>
+                  {t.footer.cookies}
+                </button>
+              </li>
+            )}
+          </ul>
+        </nav>
+        <p className="footer-copy">
+          © {year} {siteConfig.name} — {t.footer.rights}
+        </p>
       </div>
     </footer>
   );

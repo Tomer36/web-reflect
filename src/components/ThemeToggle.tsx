@@ -4,7 +4,7 @@ import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
 import { useHasMounted } from "@/hooks/useHasMounted";
 
-export function ThemeToggle({ className = "" }: { className?: string }) {
+export function ThemeToggle({ label }: { label: string }) {
   const { resolvedTheme, setTheme } = useTheme();
   const mounted = useHasMounted();
 
@@ -14,10 +14,15 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
     <button
       type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      aria-label="Toggle color theme"
-      className={`flex h-8 w-8 items-center justify-center rounded-full border border-border bg-surface text-muted transition-colors hover:text-foreground ${className}`}
+      aria-label={label}
+      aria-pressed={isDark}
+      className="icon-btn"
     >
-      {mounted && (isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />)}
+      {isDark ? (
+        <Sun className="icon" size={20} strokeWidth={1.5} aria-hidden="true" />
+      ) : (
+        <Moon className="icon" size={20} strokeWidth={1.5} aria-hidden="true" />
+      )}
     </button>
   );
 }

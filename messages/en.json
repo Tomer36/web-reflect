@@ -1,127 +1,457 @@
 {
-  "brand": "Web Reflect",
+  "site": {
+    "name": "Web Reflect",
+    "tagline": "Custom web apps, websites and systems for businesses."
+  },
   "meta": {
-    "title": "Web Reflect",
-    "description": "Web Reflect is a focused software studio building custom web apps, business websites, and systems for businesses."
+    "home": {
+      "title": "Web Reflect | Custom web apps, websites and systems",
+      "description": "Web Reflect is a focused software studio building custom web apps, business websites, and systems for businesses."
+    },
+    "services": {
+      "title": "Services | Web Reflect",
+      "description": "Web apps, custom website design and systems development by Web Reflect."
+    },
+    "portfolio": {
+      "title": "Projects | Web Reflect",
+      "description": "Systems and applications Web Reflect has built for real businesses."
+    },
+    "about": {
+      "title": "About | Web Reflect",
+      "description": "Who Web Reflect is, how we work and the businesses we work with."
+    },
+    "contact": {
+      "title": "Contact | Web Reflect",
+      "description": "Contact Web Reflect by WhatsApp, phone or email."
+    },
+    "accessibility": {
+      "title": "Accessibility Statement | Web Reflect",
+      "description": "How the Web Reflect website was made accessible and how to report a problem."
+    },
+    "privacy": {
+      "title": "Privacy Policy | Web Reflect",
+      "description": "What personal information Web Reflect collects and how it is used."
+    },
+    "terms": {
+      "title": "Terms of Use | Web Reflect",
+      "description": "The terms that apply to using the Web Reflect website."
+    },
+    "itemTitle": "{name} | Web Reflect",
+    "ogAlt": "Web Reflect logo"
   },
   "nav": {
-    "about": "Services",
+    "home": "Home",
+    "services": "Services",
     "portfolio": "Work",
-    "skills": "Skills",
-    "contact": "Contact"
+    "about": "About",
+    "contact": "Contact",
+    "cta": "Start a project",
+    "main": "Main navigation",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "language": "Language",
+    "theme": "Switch between light and dark theme",
+    "skip": "Skip to content",
+    "breadcrumb": "Breadcrumb",
+    "legal": "Legal links",
+    "accessibility": "Accessibility",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "languages": {
+      "he": "Hebrew",
+      "ar": "Arabic",
+      "en": "English"
+    }
   },
-  "hero": {
-    "eyebrow": "Software Development Studio",
-    "name": "Web Reflect",
-    "tagline": "A focused software studio building custom systems, web apps, and websites for businesses.",
-    "ctaPrimary": "Start a project",
-    "ctaSecondary": "View work",
-    "highlightsTitle": "What we build",
-    "highlights": ["Business systems", "Websites & e-commerce", "Automation & integrations", "Multilingual experiences"]
+  "common": {
+    "whatsapp": "WhatsApp",
+    "call": "Call",
+    "details": "Details",
+    "live": "Live",
+    "inProgress": "In development",
+    "zoom": "Enlarge image",
+    "close": "Close",
+    "prev": "Previous image",
+    "next": "Next image",
+    "viewer": "Image viewer",
+    "imageAlt": "{title} – screenshot {n}",
+    "openNow": "Open now",
+    "closedNow": "Closed now",
+    "closed": "Closed"
+  },
+  "wa": {
+    "general": "Hi, I would like to talk about a project.",
+    "service": "Hi, I am interested in {name}.",
+    "project": "Hi, I saw the project \"{name}\" and need something similar."
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Software Development Studio",
+      "title": "Web Reflect",
+      "lead": "A focused software studio building custom systems, web apps, and websites for businesses.",
+      "secondary": "View work",
+      "highlightsTitle": "What we build",
+      "highlights": ["Business systems", "Websites & e-commerce", "Automation & integrations", "Multilingual experiences"]
+    },
+    "services": {
+      "title": "Services",
+      "lead": "End-to-end software development — from a single business website to a multi-service backend platform.",
+      "all": "All services"
+    },
+    "portfolio": {
+      "title": "Projects",
+      "lead": "A sample of systems and applications built for real businesses.",
+      "all": "All projects"
+    },
+    "about": {
+      "title": "The studio",
+      "text": "We are a small team that plans, builds and launches software for businesses.",
+      "more": "About us"
+    },
+    "cta": {
+      "title": "Let's build something",
+      "text": "Have a project in mind? Reach out directly — we read every message."
+    }
   },
   "services": {
-    "eyebrow": "What we do",
-    "title": "Services",
-    "subtitle": "End-to-end software development — from a single business website to a multi-service backend platform.",
-    "items": [
-      {
-        "title": "Web Apps",
-        "description": "Dynamic, interactive, and scalable web applications built to grow with your business — from internal tools to customer-facing platforms."
+    "title": "What we do",
+    "lead": "Three ways we work with businesses. Choose the one closest to what you need.",
+    "introTitle": "Overview",
+    "includesTitle": "What is included",
+    "fitTitle": "A good fit when",
+    "relatedTitle": "Related projects",
+    "otherTitle": "Other services",
+    "cta": {
+      "title": "Not sure which service fits?",
+      "text": "Tell us what you need and we will suggest a direction."
+    },
+    "itemCta": {
+      "title": "Interested in {name}?",
+      "text": "Send us a short description and we will get back to you."
+    },
+    "items": {
+      "web-apps": {
+        "name": "Web Apps",
+        "short": "Internal tools and customer-facing platforms.",
+        "description": "Dynamic, interactive, and scalable web applications built to grow with your business — from internal tools to customer-facing platforms.",
+        "lead": "Software that runs in the browser and fits the way your business already works.",
+        "intro": [
+          "We build web applications around your process instead of asking you to adapt to an off-the-shelf product.",
+          "Each one is planned to grow: users, screens and features can be added later without starting again."
+        ],
+        "includes": [
+          "Planning the screens and the flow together with you",
+          "User accounts and permissions",
+          "Dashboards, forms and reports",
+          "Hebrew, Arabic and English interfaces, including right-to-left layouts"
+        ],
+        "fit": [
+          "Your work is spread across spreadsheets and messages",
+          "A ready-made product covers only part of what you need",
+          "Staff or customers need access from any device"
+        ]
       },
-      {
-        "title": "Custom Website Design",
-        "description": "Business websites, e-commerce stores, and blogs — built from scratch, fast-loading, and designed around your brand instead of a template."
+      "websites": {
+        "name": "Custom Website Design",
+        "short": "Business sites, online stores and blogs.",
+        "description": "Business websites, e-commerce stores, and blogs — built from scratch, fast-loading, and designed around your brand instead of a template.",
+        "lead": "A site designed around your brand, written in code and not assembled from a template.",
+        "intro": [
+          "We design and build the site ourselves, so the layout, the content and the speed stay under your control.",
+          "The result is light pages that are built for phones first and are ready for search engines."
+        ],
+        "includes": [
+          "Design matched to your brand",
+          "Mobile-first, accessible pages",
+          "An online store or catalogue when you need one",
+          "Search basics: titles, descriptions, sitemap and structured data"
+        ],
+        "fit": [
+          "You are opening a business or replacing an old site",
+          "You sell online or plan to",
+          "Your customers read more than one language"
+        ]
       },
-      {
-        "title": "Systems Development",
-        "description": "Process automation, third-party integrations, and backend systems that remove manual work and connect the tools your business already uses."
+      "systems": {
+        "name": "Systems Development",
+        "short": "Automation, integrations and backend systems.",
+        "description": "Process automation, third-party integrations, and backend systems that remove manual work and connect the tools your business already uses.",
+        "lead": "Less manual work, and tools that pass information to each other on their own.",
+        "intro": [
+          "We connect the software your business already uses and automate the steps people repeat every day.",
+          "Where no existing tool does the job, we build the backend service that does."
+        ],
+        "includes": [
+          "Mapping the current process and where it gets stuck",
+          "Integrations with third-party services",
+          "Automated documents, messages and data sync",
+          "Backend services and APIs"
+        ],
+        "fit": [
+          "The same data is typed into more than one place",
+          "A routine task takes hours every week",
+          "Your tools do not talk to each other"
+        ]
       }
-    ]
-  },
-  "clients": {
-    "eyebrow": "Working together",
-    "title": "Clients",
-    "subtitle": "Businesses that have chosen to work with me.",
-    "items": ["Okal Brothers", "Shehab Bakery", "Top Cosmetics", "Cali Armor"]
+    }
   },
   "portfolio": {
-    "eyebrow": "Selected work",
-    "title": "Projects",
-    "subtitle": "A sample of systems and applications built for real businesses.",
-    "statusInProgress": "In development",
-    "statusLive": "Live",
-    "items": [
-      {
+    "title": "Selected work",
+    "lead": "Five projects, from an online store platform to a document automation service.",
+    "overviewTitle": "About the project",
+    "featuresTitle": "Main features",
+    "galleryTitle": "Screenshots",
+    "factsTitle": "At a glance",
+    "typeLabel": "Type",
+    "statusLabel": "Status",
+    "serviceLabel": "Service",
+    "otherTitle": "More projects",
+    "cta": {
+      "title": "Have a similar project?",
+      "text": "Tell us about it and we will explain how we would approach it."
+    },
+    "itemCta": {
+      "title": "Need something like this?",
+      "text": "Describe your business and we will tell you what fits."
+    },
+    "items": {
+      "ecommerce-platform": {
         "tag": "E-commerce platform",
         "title": "E-commerce Platform",
-        "status": "inProgress",
         "description": "A custom e-commerce platform with independent storefronts, multilingual support, and a shopping experience tailored to each brand.",
-        "stack": ["E-commerce", "Multilingual storefront"]
+        "stack": ["E-commerce", "Multilingual storefront"],
+        "lead": "A store platform where every brand gets its own storefront.",
+        "overview": [
+          "The platform lets several storefronts run independently, each with its own look and content.",
+          "Shoppers browse in their own language, and the buying flow is adjusted to the brand and not fixed by a template."
+        ],
+        "features": ["Independent storefronts", "Multilingual catalogue and checkout", "Shopping flow adjusted per brand"]
       },
-      {
+      "collections-system": {
         "tag": "Business management system",
         "title": "Customer Follow-Up & Debt Collection System",
-        "status": "live",
         "description": "A system for customer follow-up and collections, with tailored workflows and business-data synchronization.",
-        "stack": ["Customer management", "Business workflows"]
+        "stack": ["Customer management", "Business workflows"],
+        "lead": "One place to follow up with customers and track what is owed.",
+        "overview": [
+          "The team sees a clear picture of each customer: what was agreed, what is outstanding and what the next step is.",
+          "Workflows follow the way the business already handles collections, and data is kept in sync so nobody works from an old list."
+        ],
+        "features": ["Customer follow-up records", "Collection workflows shaped to the business", "Synchronized business data"]
       },
-      {
+      "custom-crm": {
         "tag": "Management system",
         "title": "Custom CRM System",
-        "status": "live",
         "description": "A custom management system that brings business information and workflows together in one place.",
-        "stack": ["Business management", "Custom workflows"]
+        "stack": ["Business management", "Custom workflows"],
+        "lead": "A management system shaped around one business, not a generic product.",
+        "overview": [
+          "Information that used to live in different places is gathered into a single system.",
+          "Screens and workflows were designed for how this business works day to day."
+        ],
+        "features": ["Business information in one place", "Workflows built to order", "Screens designed for daily work"]
       },
-      {
+      "digital-menu": {
         "tag": "Digital menu",
         "title": "Digital Menu",
-        "status": "live",
         "description": "A mobile-friendly digital interface with organised content and an easy-to-use experience.",
-        "stack": ["Mobile-friendly", "Multilingual"]
+        "stack": ["Mobile-friendly", "Multilingual"],
+        "lead": "A menu customers open on their own phone.",
+        "overview": [
+          "Content is arranged in clear sections so customers find what they want quickly.",
+          "The interface is built for small screens first and is available in more than one language."
+        ],
+        "features": ["Built for phones first", "Content that is easy to scan", "More than one language"]
       },
-      {
+      "document-automation": {
         "tag": "Automation microservice",
         "title": "Document Automation Service",
-        "status": "live",
         "description": "An automation service for processing documents and delivering results efficiently.",
-        "stack": ["Document processing", "Automation"]
+        "stack": ["Document processing", "Automation"],
+        "lead": "A small service that takes documents in and returns results without manual handling.",
+        "overview": [
+          "The service processes documents automatically and delivers the output where it is needed.",
+          "It runs as a standalone microservice, so other systems can use it without being changed."
+        ],
+        "features": ["Automatic document processing", "Results delivered without manual steps", "Runs as an independent service"]
       }
-    ]
+    }
   },
-  "skills": {
-    "eyebrow": "Toolbox",
-    "title": "Capabilities",
-    "subtitle": "The areas we specialize in, from development to launch.",
-    "items": [
-      "Web applications & websites",
-      "Business management systems",
-      "Automation & integrations",
-      "E-commerce",
-      "Multilingual & RTL development"
-    ]
+  "about": {
+    "title": "About Web Reflect",
+    "lead": "A small studio. You talk directly to the people who build your project.",
+    "story": {
+      "title": "Who we are",
+      "paragraphs": [
+        "Web Reflect develops software for businesses: web applications, websites and the systems behind them.",
+        "We keep the team small on purpose. That means fewer hand-offs, clear answers and software that matches what was agreed."
+      ]
+    },
+    "process": {
+      "title": "How we work",
+      "steps": [
+        { "title": "Understand", "text": "We learn how your business works and what the software has to solve." },
+        { "title": "Plan", "text": "You get a clear scope: what will be built, in what order and what we need from you." },
+        { "title": "Build", "text": "We develop in stages and show you working software along the way." },
+        { "title": "Launch", "text": "We put it live, check it in real use and stay available afterwards." }
+      ]
+    },
+    "capabilities": {
+      "title": "Capabilities",
+      "lead": "The areas we specialize in, from development to launch.",
+      "items": [
+        "Web applications & websites",
+        "Business management systems",
+        "Automation & integrations",
+        "E-commerce",
+        "Multilingual & RTL development"
+      ]
+    },
+    "clients": {
+      "title": "Clients",
+      "lead": "Businesses that have chosen to work with us.",
+      "logoAlt": "{name} logo",
+      "items": {
+        "okal": "Okal Brothers",
+        "bakery": "Shehab Bakery",
+        "topcosmetics": "Top Cosmetics",
+        "cali-armor": "Cali Armor"
+      }
+    },
+    "cta": {
+      "title": "Want to work with us?",
+      "text": "A short message is enough to start."
+    }
   },
   "contact": {
-    "eyebrow": "Get in touch",
-    "title": "Let's build something",
-    "subtitle": "Have a project in mind? Reach out directly — I read every message.",
-    "direct": {
-      "title": "Direct contact",
-      "email": "Email",
+    "title": "Contact",
+    "lead": "Choose the way that suits you. We answer every message ourselves.",
+    "detailsTitle": "Direct contact",
+    "addressLabel": "Address",
+    "tiles": {
+      "whatsapp": "WhatsApp",
       "phone": "Phone",
-      "whatsapp": "WhatsApp"
+      "email": "Email",
+      "navigate": "Navigate"
+    },
+    "hoursTitle": "Opening hours",
+    "socialTitle": "Follow us",
+    "brief": {
+      "title": "What helps us answer quickly",
+      "items": [
+        "What your business does",
+        "What you want to build or improve",
+        "When you would like it to be ready"
+      ]
     }
   },
   "footer": {
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "cookies": "Cookie settings"
   },
-  "accessibility": {
-    "openWidget": "Accessibility options",
-    "panelTitle": "Accessibility",
+  "a11y": {
+    "open": "Accessibility options",
+    "title": "Accessibility",
     "textSize": "Text size",
-    "decreaseText": "Decrease text size",
+    "smaller": "Decrease text size",
+    "bigger": "Increase text size",
+    "contrast": "High contrast",
+    "links": "Underline links",
+    "motion": "Stop animations",
     "reset": "Reset",
-    "increaseText": "Increase text size",
-    "highContrast": "High contrast",
-    "underlineLinks": "Underline links"
+    "statement": "Accessibility statement"
+  },
+  "consent": {
+    "label": "Cookie consent",
+    "text": "We use analytics cookies only if you agree.",
+    "accept": "Accept",
+    "decline": "Decline"
+  },
+  "legal": {
+    "accessibility": {
+      "title": "Accessibility Statement",
+      "intro": "Web Reflect wants everyone to be able to use this website, including people with disabilities. Last updated: October 5, 2026.",
+      "sections": [
+        {
+          "heading": "What we did",
+          "paragraphs": [
+            "The site is built to follow the Web Content Accessibility Guidelines (WCAG) 2.1 at level AA: text contrast, visible keyboard focus, a correct heading order, text alternatives for images and full keyboard operation.",
+            "An accessibility menu is available on every page. It lets you enlarge the text, switch to high contrast, underline links and stop animations. Your choices are saved in your browser only."
+          ]
+        },
+        {
+          "heading": "Known limitations",
+          "paragraphs": [
+            "Client logos are shown as supplied by the clients and may contain small text. Third-party services we link to, such as WhatsApp, are outside our control."
+          ]
+        },
+        {
+          "heading": "Found a problem?",
+          "paragraphs": [
+            "If something on the site is hard to use, write to {email} and tell us which page and what happened. We will look into it and reply."
+          ]
+        }
+      ]
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "intro": "This policy explains what personal information Web Reflect collects, why we use it, and the choices available to you. Last updated: September 12, 2026.",
+      "sections": [
+        {
+          "heading": "Information we collect",
+          "paragraphs": [
+            "When you contact us by email, telephone, or WhatsApp, we may receive information you choose to provide, such as your name, contact details, company details, and the contents of your enquiry.",
+            "Hosting and technical providers may process limited technical data needed to operate and secure the website, including IP address, browser and device information, requested pages, and request time. We do not use advertising pixels, analytics trackers, or account registration.",
+            "When you choose an accessibility setting, such as text size, high contrast, or underlined links, we store that preference only in your browser's local storage so it can be remembered on later visits. This preference is not used for advertising or visitor tracking."
+          ]
+        },
+        {
+          "heading": "How we use and share information",
+          "paragraphs": [
+            "We use information to respond to enquiries, provide requested services, manage business communications, protect the website, and meet legal obligations. We do not sell personal information or use it for unrelated advertising.",
+            "We share information only where necessary to provide services, operate and secure the site, comply with law, or protect our rights. WhatsApp communications are also subject to WhatsApp's privacy practices."
+          ]
+        },
+        {
+          "heading": "Retention, security, and deletion",
+          "paragraphs": [
+            "We retain information only as long as reasonably needed or legally required and use reasonable safeguards to protect it. No internet transmission or storage system is completely secure.",
+            "You may request access, correction, or deletion by emailing {email} with the subject Data deletion request. Include enough information to identify your request. We will respond under applicable law; some data may need to be retained where permitted or required."
+          ]
+        },
+        {
+          "heading": "Changes and contact",
+          "paragraphs": [
+            "We may update this policy when our practices or legal requirements change. The latest version will be posted here. Privacy questions: {email}."
+          ]
+        }
+      ]
+    },
+    "terms": {
+      "title": "Terms of Use",
+      "intro": "These terms govern your use of the Web Reflect website. Last updated: September 12, 2026.",
+      "sections": [
+        {
+          "heading": "Using this website",
+          "paragraphs": [
+            "Use this website only for lawful personal or business purposes. Do not interfere with its operation, attempt unauthorized access, introduce harmful code, or use its content in a way that infringes the rights of Web Reflect or others."
+          ]
+        },
+        {
+          "heading": "Website content and enquiries",
+          "paragraphs": [
+            "Unless stated otherwise, this website's design, text, graphics, logos, and other content are owned by or licensed to Web Reflect. You may not copy, modify, distribute, or use them commercially without written permission.",
+            "Information on this site is general information and does not create a contractual relationship. Services, scope, timing, fees, and deliverables must be agreed in a separate written agreement."
+          ]
+        },
+        {
+          "heading": "External links, disclaimer, and changes",
+          "paragraphs": [
+            "Third-party services, including WhatsApp, are independent of Web Reflect. We are not responsible for their content, availability, or privacy practices.",
+            "The website is provided as is and as available to the extent permitted by law. We may change these terms or the website at any time. Questions: {email}."
+          ]
+        }
+      ]
+    }
   }
 }
