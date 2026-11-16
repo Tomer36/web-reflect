@@ -36,13 +36,13 @@ export default async function PortfolioPage({ params }: Props) {
       <section className="section">
         <div className="wrap">
           <ul className="project-grid">
-            {projects.map((project) => {
+            {projects.map((project, i) => {
               const p = t.portfolio.items[project.slug];
               return (
                 <li key={project.slug}>
                   <Link className="card project-card" href={href(locale, `/portfolio/${project.slug}`)}>
                     <div className="project-card-top">
-                      <span className="icon-badge">
+                      <span className={`icon-tile accent-${i % 5}`}>
                         <Icon name={project.icon} />
                       </span>
                       <StatusChip status={project.status} t={t} />

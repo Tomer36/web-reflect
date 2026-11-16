@@ -1,11 +1,13 @@
+/* eslint-disable @next/next/no-img-element -- logos are pre-sized by scripts/build-images.mjs */
 import type { Metadata } from "next";
 import Link from "next/link";
 import { setRequestLocale } from "next-intl/server";
-import { Icon } from "@/components/Icon";
-import { Cta, StatusChip } from "@/components/PageHead";
-import { getDict, href, toLocale } from "@/lib/i18n";
+import { Icon, type IconName } from "@/components/Icon";
+import { Cta, JsonLd, StatusChip } from "@/components/PageHead";
+import images from "@/generated/images.json";
+import { fill, getDict, href, locales, toLocale } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
-import { projects, services, whatsappLink } from "@/lib/site-config";
+import { clients, projects, services, whatsappLink } from "@/lib/site-config";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -15,39 +17,65 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return pageMetadata(locale, "/", t, t.meta.home);
 }
 
+// One icon per "why us" item, in the order of home.why.items.
+const WHY_ICONS: IconName[] = ["messages", "languages", "zap", "search", "accessibility", "puzzle"];
+
+// Bar heights (%) for the dashboard drawn in the hero illustration.
+const BARS = [38, 62, 48, 80, 56, 92, 70, 100];
+
 // The home page is a set of previews. Each one links to the page that holds
 // the full content; nothing here is repeated there.
 export default async function Home({ params }: Props) {
   const locale = toLocale((await params).locale);
   setRequestLocale(locale);
   const t = await getDict(locale);
-  const { hero } = t.home;
+  const { hero, stats, why, faq } = t.home;
+  const logos = images.clients as Record<string, { src: string; width: number; height: number }>;
+
+  // Counted from the site data, so the numbers stay true as it changes.
+  const statItems = [
+    { value: projects.length, label: stats.projects },
+    { value: clients.length, label: stats.clients },
+    { value: services.length, label: stats.services },
+    { value: locales.length, label: stats.languages },
+  ];
 
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faq.items.map((item) => ({
+            "@type": "Question",
+            name: item.q,
+            acceptedAnswer: { "@type": "Answer", text: item.a },
+          })),
+        }}
+      />
       <section className="hero" aria-labelledby="hero-title">
         <div className="wrap hero-grid">
           <div>
+            <span className="pill">
+              <Icon name="sparkles" size={16} />
+              {hero.title} · {hero.eyebrow}
+            </span>
             <h1 id="hero-title">
-              {hero.title}
-              <span>{hero.eyebrow}</span>
+              {hero.headline} <span className="text-gradient">{hero.highlight}</span>
             </h1>
             <p className="lead">{hero.lead}</p>
             <div className="btn-row">
-              <a className="btn btn-primary" href={whatsappLink(t.wa.general)} target="_blank" rel="noopener">
+              <a className="btn btn-primary btn-lg" href={whatsappLink(t.wa.general)} target="_blank" rel="noopener">
                 <Icon name="whatsapp" />
                 {t.nav.cta}
               </a>
-              <Link className="btn btn-secondary" href={href(locale, "/portfolio")}>
+              <Link className="btn btn-ghost-light btn-lg" href={href(locale, "/portfolio")}>
                 {hero.secondary}
                 <Icon name="arrow" className="icon-dir" />
               </Link>
             </div>
-          </div>
-          <div className="card">
-            <h2>{hero.highlightsTitle}</h2>
-            <ul className="hero-list">
-              {hero.highlights.map((item) => (
+            <ul className="hero-trust">
+              {hero.trust.map((item) => (
                 <li key={item}>
                   <Icon name="check" size={18} />
                   {item}
@@ -55,32 +83,126 @@ export default async function Home({ params }: Props) {
               ))}
             </ul>
           </div>
+
+          {/* Decorative: an app window with a dashboard and three floating chips. */}
+          <div className="hero-visual" aria-hidden="true">
+            <div className="mock">
+              <div className="mock-bar">
+                <i />
+                <i />
+                <i />
+                <b />
+              </div>
+              <div className="mock-body">
+                <div className="mock-side">
+                  <i />
+                  <i />
+                  <i />
+                  <i />
+                  <i />
+                </div>
+                <div className="mock-main">
+                  <div className="mock-kpis">
+                    {[0, 1, 2].map((n) => (
+                      <span key={n} className={`accent-${n}`}>
+                        <i />
+                        <b />
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mock-chart">
+                    {BARS.map((h, n) => (
+                      <i key={n} style={{ height: `${h}%`, animationDelay: `${n * 60}ms` }} />
+                    ))}
+                  </div>
+                  <div className="mock-rows">
+                    {[0, 1].map((n) => (
+                      <span key={n}>
+                        <i />
+                        <b />
+                        <em />
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <span className="float-chip c1">
+              <span className="live-dot" />
+              {t.common.live}
+            </span>
+            <span className="float-chip c2">
+              <span className="icon-tile accent-1">
+                <Icon name="cart" size={18} />
+              </span>
+              {hero.highlights[1]}
+            </span>
+            <span className="float-chip c3">
+              <span className="icon-tile accent-2">
+                <Icon name="workflow" size={18} />
+              </span>
+              {hero.highlights[2]}
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <div className="wrap stats">
+        <ul className="card">
+          {statItems.map((item) => (
+            <li key={item.label}>
+              <strong>{item.value}</strong>
+              <span>{item.label}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <section className="logo-strip" aria-label={t.home.clients.title}>
+        <div className="wrap">
+          <p>{t.home.clients.title}</p>
+          <ul>
+            {clients.map((client) => {
+              const logo = logos[client.key];
+              const name = t.about.clients.items[client.key];
+              return (
+                <li key={client.key} className={client.dark ? "is-dark" : undefined}>
+                  <img
+                    src={logo.src}
+                    alt={fill(t.about.clients.logoAlt, { name })}
+                    width={logo.width}
+                    height={logo.height}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </section>
 
       <section className="section" aria-labelledby="services-title">
         <div className="wrap">
-          <div className="section-head">
+          <div className="section-head center">
             <h2 id="services-title">{t.home.services.title}</h2>
             <p>{t.home.services.lead}</p>
           </div>
-          <ul className="tile-grid">
-            {services.map((service) => {
+          <ul className="plan-grid">
+            {services.map((service, i) => {
               const s = t.services.items[service.slug];
               return (
                 <li key={service.slug}>
-                  <Link className="card tile" href={href(locale, `/services/${service.slug}`)}>
-                    <span className="icon-badge">
-                      <Icon name={service.icon} />
+                  <Link className={`card plan-card lift accent-${i}`} href={href(locale, `/services/${service.slug}`)}>
+                    <span className="icon-tile">
+                      <Icon name={service.icon} size={26} />
                     </span>
-                    <div className="tile-body">
-                      <h3>{s.name}</h3>
-                      <p>{s.short}</p>
-                      <span className="more">
-                        {t.common.details}
-                        <Icon name="arrow" size={14} className="icon-dir" />
-                      </span>
-                    </div>
+                    <h3>{s.name}</h3>
+                    <p>{s.short}</p>
+                    <span className="btn btn-secondary btn-block">
+                      {t.common.details}
+                      <Icon name="arrow" className="icon-dir" />
+                    </span>
                   </Link>
                 </li>
               );
@@ -89,20 +211,45 @@ export default async function Home({ params }: Props) {
         </div>
       </section>
 
+      <section className="section section-tint" aria-labelledby="why-title">
+        <div className="wrap">
+          <div className="section-head center">
+            <h2 id="why-title">{why.title}</h2>
+            <p>{why.lead}</p>
+          </div>
+          <ul className="feature-grid">
+            {why.items.map((item, i) => (
+              <li key={item.title} className={`feature lift accent-${i % 5}`}>
+                <span className="icon-tile">
+                  <Icon name={WHY_ICONS[i]} size={26} />
+                </span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       <section className="section" aria-labelledby="portfolio-title">
         <div className="wrap">
-          <div className="section-head">
+          <div className="section-head center">
             <h2 id="portfolio-title">{t.home.portfolio.title}</h2>
             <p>{t.home.portfolio.lead}</p>
           </div>
           {/* The first three projects; the rest are on the portfolio page. */}
-          <ul className="tile-grid">
-            {projects.slice(0, 3).map((project) => {
+          <ul className="show-grid">
+            {projects.slice(0, 3).map((project, i) => {
               const p = t.portfolio.items[project.slug];
               return (
                 <li key={project.slug}>
-                  <Link className="card tile" href={href(locale, `/portfolio/${project.slug}`)}>
-                    <div className="tile-body">
+                  <Link className={`card show-card lift accent-${i}`} href={href(locale, `/portfolio/${project.slug}`)}>
+                    <div className="show-thumb">
+                      <span className="icon-tile">
+                        <Icon name={project.icon} size={28} />
+                      </span>
+                    </div>
+                    <div className="show-body">
                       <div className="tile-top">
                         <span className="eyebrow">{p.tag}</span>
                         <StatusChip status={project.status} t={t} />
@@ -110,7 +257,7 @@ export default async function Home({ params }: Props) {
                       <h3>{p.title}</h3>
                       <span className="more">
                         {t.common.details}
-                        <Icon name="arrow" size={14} className="icon-dir" />
+                        <Icon name="arrow" size={16} className="icon-dir" />
                       </span>
                     </div>
                   </Link>
@@ -129,15 +276,46 @@ export default async function Home({ params }: Props) {
 
       <section className="section" aria-labelledby="about-title">
         <div className="wrap">
-          <div className="card card-muted cta">
+          <div className="studio">
             <div>
               <h2 id="about-title">{t.home.about.title}</h2>
               <p>{t.home.about.text}</p>
             </div>
-            <Link className="btn btn-secondary" href={href(locale, "/about")}>
+            <div className="studio-icons" aria-hidden="true">
+              {(["app", "globe", "workflow", "dashboard"] as const).map((name, i) => (
+                <span key={name} className={`icon-tile accent-${i}`}>
+                  <Icon name={name} size={26} />
+                </span>
+              ))}
+            </div>
+            <Link className="btn btn-primary" href={href(locale, "/about")}>
               {t.home.about.more}
               <Icon name="arrow" className="icon-dir" />
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-tint" aria-labelledby="faq-title">
+        <div className="wrap faq-layout">
+          <div className="faq-intro">
+            <h2 id="faq-title">{faq.title}</h2>
+            <p>{faq.lead}</p>
+            <a className="btn btn-primary desktop-only" href={whatsappLink(t.wa.general)} target="_blank" rel="noopener">
+              <Icon name="whatsapp" />
+              {t.nav.cta}
+            </a>
+          </div>
+          <div className="faq-list">
+            {faq.items.map((item, i) => (
+              <details key={item.q} open={i === 0}>
+                <summary>
+                  <h3>{item.q}</h3>
+                  <Icon name="plus" size={26} />
+                </summary>
+                <p>{item.a}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>

@@ -2,7 +2,7 @@
 
 Website of Web Reflect (web-reflect.com). Next.js (App Router) with Hebrew, Arabic and English, shipped as a fully static export — plain HTML/CSS/JS, no server required.
 
-The design follows the same language as the Top Cosmetics landing page and CRM (Hostinger hPanel style): soft tinted canvas, white cards, one soft shadow, compact buttons, outlined icons.
+The design follows the hostinger.com marketing site, in the Web Reflect blue (`--brand-fill` `#2f5fd6`, a darker shade of the logo blue `#407bff`, because white text on the logo blue is only 3.8:1): a dark navy hero and closing call-to-action band, pale blue tinted sections, bold 800-weight display headings, accent-coloured icon tiles (blue, pink, green, orange, yellow), cards that lift on hover, a scrolling promo strip above the header and a dark multi-column footer.
 
 ## Stack
 
@@ -68,46 +68,15 @@ Originals live in `content/` and are never copied to `out/`. `scripts/build-imag
 
 ## Colours
 
-`--brand` is a darker shade of the logo blue (`#407bff`), because white text on the logo blue is only 3.8:1.
+All tokens are in `src/app/globals.css` (`:root`, `[data-theme="dark"]` and the high-contrast override). The dark bands (`--hero-bg`, `--night`) are the same in both themes.
 
 | Pair (light theme) | Contrast |
 | --- | --- |
-| white on `--brand` `#2f5fd6` | 5.63 |
-| `--brand` on `--canvas` / `--brand-soft` | 5.25 / 5.02 |
-| `--brand-dark` `#2247a8` on `--brand-soft` | 7.39 |
-| `--text` on `--canvas` | 15.55 |
-| `--text-muted` on white / canvas | 6.04 / 5.63 |
-| `--text-faint` on white | 3.30 — icons only, never text |
+| white on `--brand-fill` `#2f5fd6` | 5.6 |
+| `--brand` on `--surface-muted` `#f4f7ff` / `--brand-soft` `#e6eeff` | 5.2 / 4.8 |
+| `--ink` `#13265e` (headings) on white | 14.4 |
+| `--text-muted` `#5a6175` on white | 6.3 |
+| `--on-night-muted` `#c3d3f5` on `#13265e` | 10.2 |
+| `--text-faint` on white | 3.4 — icons only, never text |
 
-The dark theme redefines the same tokens (all text pairs are above 7:1). Light is the default; the header button switches, and the choice is kept in the browser.
-
-## Analytics (optional)
-
-Off by default: with no ID, the built pages contain no analytics code, set no cookies and show no banner.
-
-To turn it on, build with `NEXT_PUBLIC_GA4_ID=G-XXXXXXXXXX` (for example in `.env.local`). Visitors then see a consent banner, Google Analytics loads only after they accept, and a "cookie settings" link appears in the footer.
-
-## Deploying to Hostinger (or any shared/static hosting)
-
-`npm run build` produces a fully static site in `out/` — no Node.js needed on the server.
-
-**1. Build:**
-
-```bash
-npm install
-npm run build
-```
-
-**2. Upload.** Copy the *contents* of `out/` (not the folder itself) to your domain's document root (`public_html`) via File Manager or FTP. This includes `out/.htaccess` — make sure your FTP client shows hidden/dotfiles, or it'll get skipped silently.
-
-To update the live site later, rebuild and re-upload the contents of `out/`.
-
-### Why the `.htaccess` looks the way it does
-
-Next.js's static export writes each route as a flat file (e.g. `he.html`) *and* a same-named directory of internal prefetch data (e.g. `he/`) side by side. Apache's default behavior is to redirect a bare `/he` request to `/he/` because a directory of that name exists, which then 404s (no `index.html` in there) before the rewrite rule that maps `/he` → `he.html` ever runs. `public/.htaccess` disables that auto-redirect (`DirectorySlash Off`) and rewrites clean URLs to their `.html` file directly. If you ever hand-edit it, keep both pieces — dropping either one breaks every route except the homepage redirect.
-
-The same rule serves the inner pages (`/he/services/web-apps` → `he/services/web-apps.html`). The `.htaccess` was not changed in the redesign.
-
-### Why `scripts/fix-export.mjs` exists
-
-When the site is built on Windows, Next.js writes the router's prefetch files into nested folders (`__next.$d$locale/about/__PAGE__.txt`) while the browser asks for flat names (`__next.$d$locale.about.__PAGE__.txt`), so every prefetch returns 404. The script renames them after the build. On macOS/Linux it does nothing.
+Home page text added with this design that still needs review (all three languages): `site.promo` (ticker), `home.hero.headline|highlight|trust`, `home.why`, `home.faq` (also emitted as FAQPage JSON-LD). The stat card counts projects, clients, services and languages straight from `site-config.ts`, so it never shows a number that is not true.

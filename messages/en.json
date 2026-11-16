@@ -1,7 +1,13 @@
 {
   "site": {
     "name": "Web Reflect",
-    "tagline": "Custom web apps, websites and systems for businesses."
+    "tagline": "Custom web apps, websites and systems for businesses.",
+    "promo": [
+      "Web apps, websites and business systems",
+      "Full right-to-left support for Hebrew and Arabic",
+      "Built around how your business works",
+      "Start with a single WhatsApp message"
+    ]
   },
   "meta": {
     "home": {
@@ -90,8 +96,19 @@
       "title": "Web Reflect",
       "lead": "A focused software studio building custom systems, web apps, and websites for businesses.",
       "secondary": "View work",
-      "highlightsTitle": "What we build",
-      "highlights": ["Business systems", "Websites & e-commerce", "Automation & integrations", "Multilingual experiences"]
+      "highlights": [
+        "Business systems",
+        "Websites & e-commerce",
+        "Automation & integrations",
+        "Multilingual experiences"
+      ],
+      "headline": "Custom software that",
+      "highlight": "grows your business",
+      "trust": [
+        "Direct contact with the developers",
+        "Hebrew, Arabic & English",
+        "Support after launch"
+      ]
     },
     "services": {
       "title": "Services",
@@ -111,6 +128,71 @@
     "cta": {
       "title": "Let's build something",
       "text": "Have a project in mind? Reach out directly — we read every message."
+    },
+    "clients": {
+      "title": "Trusted by"
+    },
+    "stats": {
+      "projects": "Projects",
+      "services": "Service areas",
+      "languages": "Languages",
+      "clients": "Business clients"
+    },
+    "why": {
+      "title": "Why businesses choose Web Reflect",
+      "lead": "Everything you need from a development partner — without the overhead of a big agency.",
+      "items": [
+        {
+          "title": "No middlemen",
+          "text": "You speak with the developer writing your code, from the first call to launch."
+        },
+        {
+          "title": "Truly multilingual",
+          "text": "Right-to-left layouts and translations are built in from day one, not bolted on at the end."
+        },
+        {
+          "title": "Fast by default",
+          "text": "Lean pages that load quickly on any phone and any network."
+        },
+        {
+          "title": "Found on Google",
+          "text": "Clean structure, metadata and sitemaps so search engines understand your site."
+        },
+        {
+          "title": "Accessible to everyone",
+          "text": "Built with accessibility in mind: keyboard navigation, contrast and screen-reader support."
+        },
+        {
+          "title": "Fits the way you work",
+          "text": "Systems shaped around your processes and connected to the tools you already use."
+        }
+      ]
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "lead": "Short answers to what clients usually ask before starting.",
+      "items": [
+        {
+          "q": "How do we get started?",
+          "a": "Send us a short message about what you need. We will set up a call, ask a few questions and come back with a clear proposal."
+        },
+        {
+          "q": "How long does a project take?",
+          "a": "It depends on the scope. A business website is usually much quicker than a custom system; you get a timeline before any work begins."
+        },
+        {
+          "q": "Can you build my site in Hebrew, Arabic and English?",
+          "a": "Yes. We build multilingual sites with full right-to-left support, so every language looks and reads naturally."
+        },
+        {
+          "q": "Can the system connect to tools we already use?",
+          "a": "Usually, yes. We integrate with existing services, APIs and data sources, and automate the manual steps between them."
+        },
+        {
+          "q": "What happens after launch?",
+          "a": "We follow the first weeks of real use, fix whatever comes up and stay available for changes and new features."
+        }
+      ]
     }
   },
   "services": {
@@ -219,61 +301,96 @@
         "tag": "E-commerce platform",
         "title": "E-commerce Platform",
         "description": "A custom e-commerce platform with independent storefronts, multilingual support, and a shopping experience tailored to each brand.",
-        "stack": ["E-commerce", "Multilingual storefront"],
+        "stack": [
+          "E-commerce",
+          "Multilingual storefront"
+        ],
         "lead": "A store platform where every brand gets its own storefront.",
         "overview": [
           "The platform lets several storefronts run independently, each with its own look and content.",
           "Shoppers browse in their own language, and the buying flow is adjusted to the brand and not fixed by a template."
         ],
-        "features": ["Independent storefronts", "Multilingual catalogue and checkout", "Shopping flow adjusted per brand"]
+        "features": [
+          "Independent storefronts",
+          "Multilingual catalogue and checkout",
+          "Shopping flow adjusted per brand"
+        ]
       },
       "collections-system": {
         "tag": "Business management system",
         "title": "Customer Follow-Up & Debt Collection System",
         "description": "A system for customer follow-up and collections, with tailored workflows and business-data synchronization.",
-        "stack": ["Customer management", "Business workflows"],
+        "stack": [
+          "Customer management",
+          "Business workflows"
+        ],
         "lead": "One place to follow up with customers and track what is owed.",
         "overview": [
           "The team sees a clear picture of each customer: what was agreed, what is outstanding and what the next step is.",
           "Workflows follow the way the business already handles collections, and data is kept in sync so nobody works from an old list."
         ],
-        "features": ["Customer follow-up records", "Collection workflows shaped to the business", "Synchronized business data"]
+        "features": [
+          "Customer follow-up records",
+          "Collection workflows shaped to the business",
+          "Synchronized business data"
+        ]
       },
       "custom-crm": {
         "tag": "Management system",
         "title": "Custom CRM System",
         "description": "A custom management system that brings business information and workflows together in one place.",
-        "stack": ["Business management", "Custom workflows"],
+        "stack": [
+          "Business management",
+          "Custom workflows"
+        ],
         "lead": "A management system shaped around one business, not a generic product.",
         "overview": [
           "Information that used to live in different places is gathered into a single system.",
           "Screens and workflows were designed for how this business works day to day."
         ],
-        "features": ["Business information in one place", "Workflows built to order", "Screens designed for daily work"]
+        "features": [
+          "Business information in one place",
+          "Workflows built to order",
+          "Screens designed for daily work"
+        ]
       },
       "digital-menu": {
         "tag": "Digital menu",
         "title": "Digital Menu",
         "description": "A mobile-friendly digital interface with organised content and an easy-to-use experience.",
-        "stack": ["Mobile-friendly", "Multilingual"],
+        "stack": [
+          "Mobile-friendly",
+          "Multilingual"
+        ],
         "lead": "A menu customers open on their own phone.",
         "overview": [
           "Content is arranged in clear sections so customers find what they want quickly.",
           "The interface is built for small screens first and is available in more than one language."
         ],
-        "features": ["Built for phones first", "Content that is easy to scan", "More than one language"]
+        "features": [
+          "Built for phones first",
+          "Content that is easy to scan",
+          "More than one language"
+        ]
       },
       "document-automation": {
         "tag": "Automation microservice",
         "title": "Document Automation Service",
         "description": "An automation service for processing documents and delivering results efficiently.",
-        "stack": ["Document processing", "Automation"],
+        "stack": [
+          "Document processing",
+          "Automation"
+        ],
         "lead": "A small service that takes documents in and returns results without manual handling.",
         "overview": [
           "The service processes documents automatically and delivers the output where it is needed.",
           "It runs as a standalone microservice, so other systems can use it without being changed."
         ],
-        "features": ["Automatic document processing", "Results delivered without manual steps", "Runs as an independent service"]
+        "features": [
+          "Automatic document processing",
+          "Results delivered without manual steps",
+          "Runs as an independent service"
+        ]
       }
     }
   },
@@ -290,10 +407,22 @@
     "process": {
       "title": "How we work",
       "steps": [
-        { "title": "Understand", "text": "We learn how your business works and what the software has to solve." },
-        { "title": "Plan", "text": "You get a clear scope: what will be built, in what order and what we need from you." },
-        { "title": "Build", "text": "We develop in stages and show you working software along the way." },
-        { "title": "Launch", "text": "We put it live, check it in real use and stay available afterwards." }
+        {
+          "title": "Understand",
+          "text": "We learn how your business works and what the software has to solve."
+        },
+        {
+          "title": "Plan",
+          "text": "You get a clear scope: what will be built, in what order and what we need from you."
+        },
+        {
+          "title": "Build",
+          "text": "We develop in stages and show you working software along the way."
+        },
+        {
+          "title": "Launch",
+          "text": "We put it live, check it in real use and stay available afterwards."
+        }
       ]
     },
     "capabilities": {
@@ -347,7 +476,10 @@
   },
   "footer": {
     "rights": "All rights reserved.",
-    "cookies": "Cookie settings"
+    "cookies": "Cookie settings",
+    "explore": "Explore",
+    "services": "Services",
+    "contact": "Get in touch"
   },
   "a11y": {
     "open": "Accessibility options",

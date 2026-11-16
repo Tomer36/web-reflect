@@ -3,6 +3,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { MobileBar } from "@/components/MobileBar";
+import { PromoBar } from "@/components/PromoBar";
 import { AccessibilityWidget } from "@/components/AccessibilityWidget";
 import { Consent } from "@/components/Consent";
 import { SiteLogo } from "@/components/SiteLogo";
@@ -69,6 +70,7 @@ export default async function LocaleLayout({
           <a className="skip-link" href="#main">
             {t.nav.skip}
           </a>
+          <PromoBar items={t.site.promo} />
           <Header
             locale={locale}
             logo={<SiteLogo />}

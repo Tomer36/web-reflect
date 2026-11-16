@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { href, type Locale, type Messages } from "@/lib/i18n";
-import { whatsappLink } from "@/lib/site-config";
+import { siteConfig, whatsappLink } from "@/lib/site-config";
 import { Icon, type IconName } from "./Icon";
 
 export type Crumb = { name: string; path: string };
@@ -82,15 +82,21 @@ export function Cta({
   return (
     <section className="section">
       <div className="wrap">
-        <div className="card cta">
+        <div className="cta">
           <div>
             <h2>{title}</h2>
             <p>{text}</p>
           </div>
-          <a className="btn btn-primary desktop-only" href={whatsappLink(waMessage)} target="_blank" rel="noopener">
-            <Icon name="whatsapp" />
-            {t.nav.cta}
-          </a>
+          <div className="btn-row desktop-only">
+            <a className="btn btn-light btn-lg" href={whatsappLink(waMessage)} target="_blank" rel="noopener">
+              <Icon name="whatsapp" />
+              {t.nav.cta}
+            </a>
+            <a className="btn btn-ghost-light btn-lg" href={siteConfig.phoneHref}>
+              <Icon name="phone" />
+              <span dir="ltr">{siteConfig.phoneDisplay}</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>

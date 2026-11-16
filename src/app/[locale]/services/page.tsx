@@ -36,12 +36,12 @@ export default async function ServicesPage({ params }: Props) {
       <section className="section">
         <div className="wrap">
           <ul className="rows">
-            {services.map((service) => {
+            {services.map((service, i) => {
               const s = t.services.items[service.slug];
               return (
                 <li key={service.slug}>
                   <Link className="card row-card" href={href(locale, `/services/${service.slug}`)}>
-                    <span className="icon-badge">
+                    <span className={`icon-tile accent-${i % 5}`}>
                       <Icon name={service.icon} size={24} />
                     </span>
                     <div className="row-body">
