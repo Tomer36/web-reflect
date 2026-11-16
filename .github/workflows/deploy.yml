@@ -44,8 +44,23 @@ jobs:
       # check:i18n → images → next build → check:pages; any failure stops the deploy
       - run: npm run build
 
+      # Shared hosting FTP sometimes drops the connection (ECONNRESET), so a
+      # failed upload is retried once. The sync state is only written after a
+      # complete upload, so the retry picks up whatever was not sent.
       - name: Upload to hosting
+        id: upload
         if: env.FTP_SERVER != ''
+        continue-on-error: true
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./out/
+          server-dir: ${{ secrets.FTP_SERVER_DIR || './' }}
+
+      - name: Upload to hosting (retry)
+        if: steps.upload.outcome == 'failure'
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
