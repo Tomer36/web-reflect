@@ -26,6 +26,12 @@ npm run images       # regenerates public/img from content/ (run by dev and buil
 
 `check:pages` verifies for every built page: `lang`/`dir`, canonical, hreflang for he/ar/en/x-default, that the page exists in all three languages, the language-switcher targets, that no internal link leads into another language or to a missing page, no text in the wrong script, one `h1`, heading order, image alt text, unique titles and descriptions, JSON-LD, and that the page is in `sitemap.xml`.
 
+## Deploy
+
+Every push to `main` deploys automatically: [.github/workflows/deploy.yml](.github/workflows/deploy.yml) runs lint and the full build, then uploads `out/` to the hosting over FTP (only changed files are sent). A failed check stops the deploy, so the live site stays as it was. It can also be run by hand from the Actions tab (Deploy → Run workflow).
+
+It needs these repository secrets (Settings → Secrets and variables → Actions): `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`, and optionally `FTP_SERVER_DIR` (default `public_html/`). Without them the site is built but not uploaded.
+
 ## Where things live
 
 | What | Where |

@@ -1,0 +1,54 @@
+# Builds the static site and uploads out/ to the hosting over FTP.
+# Runs on every push to main, or by hand from the Actions tab.
+#
+# Repository secrets (Settings → Secrets and variables → Actions):
+#   FTP_SERVER      FTP host, e.g. ftp.web-reflect.com or the server IP
+#   FTP_USERNAME    FTP user
+#   FTP_PASSWORD    FTP password
+#   FTP_SERVER_DIR  optional, folder the site goes into (default: public_html/)
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      FTP_SERVER: ${{ secrets.FTP_SERVER }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+      - run: npm run lint
+      # check:i18n → images → next build → check:pages; any failure stops the deploy
+      - run: npm run build
+
+      - name: Upload to hosting
+        if: env.FTP_SERVER != ''
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./out/
+          server-dir: ${{ secrets.FTP_SERVER_DIR || 'public_html/' }}
+
+      - name: FTP secrets missing
+        if: env.FTP_SERVER == ''
+        run: echo "::warning::FTP_SERVER secret is not set — the site was built but not uploaded."
