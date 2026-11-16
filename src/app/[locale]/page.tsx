@@ -20,8 +20,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 // One icon per "why us" item, in the order of home.why.items.
 const WHY_ICONS: IconName[] = ["messages", "languages", "zap", "search", "accessibility", "puzzle"];
 
-// Bar heights (%) for the dashboard drawn in the hero illustration.
-const BARS = [38, 62, 48, 80, 56, 92, 70, 100];
 
 // The home page is a set of previews. Each one links to the page that holds
 // the full content; nothing here is repeated there.
@@ -56,16 +54,15 @@ export default async function Home({ params }: Props) {
       <section className="hero" aria-labelledby="hero-title">
         <div className="wrap hero-grid">
           <div>
-            <span className="pill">
-              <Icon name="sparkles" size={16} />
-              {hero.title} · {hero.eyebrow}
-            </span>
+            <p className="hero-kicker">
+              {hero.title} — {hero.eyebrow}
+            </p>
             <h1 id="hero-title">
-              {hero.headline} <span className="text-gradient">{hero.highlight}</span>
+              {hero.headline} <span className="hl">{hero.highlight}</span>
             </h1>
             <p className="lead">{hero.lead}</p>
             <div className="btn-row">
-              <a className="btn btn-primary btn-lg" href={whatsappLink(t.wa.general)} target="_blank" rel="noopener">
+              <a className="btn btn-light btn-lg" href={whatsappLink(t.wa.general)} target="_blank" rel="noopener">
                 <Icon name="whatsapp" />
                 {t.nav.cta}
               </a>
@@ -84,65 +81,28 @@ export default async function Home({ params }: Props) {
             </ul>
           </div>
 
-          {/* Decorative: an app window with a dashboard and three floating chips. */}
-          <div className="hero-visual" aria-hidden="true">
-            <div className="mock">
-              <div className="mock-bar">
-                <i />
-                <i />
-                <i />
-                <b />
-              </div>
-              <div className="mock-body">
-                <div className="mock-side">
-                  <i />
-                  <i />
-                  <i />
-                  <i />
-                  <i />
-                </div>
-                <div className="mock-main">
-                  <div className="mock-kpis">
-                    {[0, 1, 2].map((n) => (
-                      <span key={n} className={`accent-${n}`}>
-                        <i />
-                        <b />
-                      </span>
-                    ))}
-                  </div>
-                  <div className="mock-chart">
-                    {BARS.map((h, n) => (
-                      <i key={n} style={{ height: `${h}%`, animationDelay: `${n * 60}ms` }} />
-                    ))}
-                  </div>
-                  <div className="mock-rows">
-                    {[0, 1].map((n) => (
-                      <span key={n}>
-                        <i />
-                        <b />
-                        <em />
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <span className="float-chip c1">
-              <span className="live-dot" />
-              {t.common.live}
-            </span>
-            <span className="float-chip c2">
-              <span className="icon-tile accent-1">
-                <Icon name="cart" size={18} />
-              </span>
-              {hero.highlights[1]}
-            </span>
-            <span className="float-chip c3">
-              <span className="icon-tile accent-2">
-                <Icon name="workflow" size={18} />
-              </span>
-              {hero.highlights[2]}
-            </span>
+          {/* Decorative: three real projects between the braces of the logo,
+              with their reflection underneath ("Web Reflect"). */}
+          <div className="hero-braces" aria-hidden="true">
+            <span className="brace">{"{"}</span>
+            <ul className="brace-stack">
+              {projects.slice(-3).map((project, i) => {
+                const p = t.portfolio.items[project.slug];
+                return (
+                  <li key={project.slug} className={`accent-${(i + 1) % 5}`}>
+                    <span className="icon-tile">
+                      <Icon name={project.icon} size={22} />
+                    </span>
+                    <span className="brace-text">
+                      <span className="eyebrow">{p.tag}</span>
+                      <b>{p.title}</b>
+                    </span>
+                    <StatusChip status={project.status} t={t} />
+                  </li>
+                );
+              })}
+            </ul>
+            <span className="brace">{"}"}</span>
           </div>
         </div>
       </section>
