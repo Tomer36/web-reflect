@@ -34,6 +34,9 @@ jobs:
           node-version: 24
           cache: npm
 
+      # Same npm as local development: npm 12 rejects this lock file
+      # (it wants peer deps of a bundled wasm package listed separately).
+      - run: npm install -g npm@11.6.2
       - run: npm ci
       - run: npm run lint
       # check:i18n → images → next build → check:pages; any failure stops the deploy
