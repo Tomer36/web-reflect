@@ -30,7 +30,7 @@ npm run images       # regenerates public/img from content/ (run by dev and buil
 
 Every push to `main` deploys automatically: [.github/workflows/deploy.yml](.github/workflows/deploy.yml) runs lint and the full build, then uploads `out/` to the hosting over FTP (only changed files are sent). A failed check stops the deploy, so the live site stays as it was. It can also be run by hand from the Actions tab (Deploy → Run workflow).
 
-It needs these repository secrets (Settings → Secrets and variables → Actions): `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`, and optionally `FTP_SERVER_DIR` (default `public_html/`). Without them the site is built but not uploaded.
+It needs these repository secrets (Settings → Secrets and variables → Actions): `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`, and optionally `FTP_SERVER_DIR` (default `./`, because a Hostinger FTP login already opens inside `public_html`). Without them the site is built but not uploaded.
 
 ## Where things live
 

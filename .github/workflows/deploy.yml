@@ -5,7 +5,9 @@
 #   FTP_SERVER      FTP host, e.g. ftp.web-reflect.com or the server IP
 #   FTP_USERNAME    FTP user
 #   FTP_PASSWORD    FTP password
-#   FTP_SERVER_DIR  optional, folder the site goes into (default: public_html/)
+#   FTP_SERVER_DIR  optional, folder the site goes into, relative to where the
+#                   FTP login lands (default: ./ — a Hostinger FTP login already
+#                   opens inside public_html)
 name: Deploy
 
 on:
@@ -50,7 +52,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./out/
-          server-dir: ${{ secrets.FTP_SERVER_DIR || 'public_html/' }}
+          server-dir: ${{ secrets.FTP_SERVER_DIR || './' }}
 
       - name: FTP secrets missing
         if: env.FTP_SERVER == ''
